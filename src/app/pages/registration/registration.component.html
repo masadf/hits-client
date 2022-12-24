@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <form class="registration-block" [formGroup]="registration" (ngSubmit)="sendForRegistration()">
+    <div class="header">
+      Регистрация
+    </div>
+    <div class="input-values">
+      <div class="input">
+        <app-simple-input [validationRoot]="'Допустимая длина от 2 до 20!'" [name]="'username'" [formGroup]="registration" [label]="'Имя пользователя'"></app-simple-input>
+      </div>
+      <div class="input">
+        <app-simple-input [type]="'password'"  [validationRoot]="'Допустимая длина от 6 до 60!'" [name]="'password'" [formGroup]="registration"  [label]="'Пароль'"></app-simple-input>
+      </div>
+    </div>
+    <div class="message">
+      {{message}}
+    </div>
+    <div class="actions-block">
+      <app-simple-button [type]="'submit'" [text]="'Зарегистрироваться'"></app-simple-button>
+    </div>
+  </form>
+</div>
