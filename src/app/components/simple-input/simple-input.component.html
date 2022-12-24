@@ -1,0 +1,8 @@
+<div class="wrapper" [formGroup]="formGroup">
+  <label for="{{name}}">{{label}}</label>
+  <div>
+    <input type="{{type}}" name="{{name}}" formControlName="{{name}}">
+    <br>
+    <span class="err" *ngIf="!isValid()">{{validationRoot}}</span>
+  </div>
+</div>

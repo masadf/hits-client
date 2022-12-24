@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <form class="login-block" [formGroup]="login" (ngSubmit)="sendForLogin()">
+    <div class="header">
+      Вход
+    </div>
+    <div class="input-values">
+      <div class="input">
+        <app-simple-input [validationRoot]="'Допустимая длина от 2 до 20!'" [name]="'username'" [formGroup]="login" [label]="'Имя пользователя'"></app-simple-input>
+      </div>
+      <div class="input">
+        <app-simple-input [type]="'password'" [validationRoot]="'Допустимая длина от 6 до 60!'" [name]="'password'" [formGroup]="login"  [label]="'Пароль'"></app-simple-input>
+      </div>
+    </div>
+    <div class="message">
+      {{message}}
+    </div>
+    <div class="actions-block">
+      <app-simple-button [type]="'submit'" [text]="'Войти'"></app-simple-button>
+    </div>
+  </form>
+</div>

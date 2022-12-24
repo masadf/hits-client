@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div class="main-block">
+    <div class="image-block block">
+      <div class="image-wrapper">
+        <div *ngFor="let hit of hits" class="point"
+             [ngStyle]="{'top': this.getPointersBlockWidth() - (hit.yval*this.getPointersBlockWidth()/(1.25*hit.rval)-4)+'px',
+             'left': (getPointersBlockWidth() + hit.xval*getPointersBlockWidth()/(1.25*hit.rval)-4)+'px',
+             'background': hit.hit ? 'darkgreen' : 'red',
+             'display': hit.rval==this.points.value!.rVal ? 'block': 'none'
+             }">
+        </div>
+        <img (click)="setFieldsAfterClick($event)" id="pointers-block" src="./assets/images/area.png" alt="">
+      </div>
+    </div>
+    <form class="values-block block" [formGroup]="points" (ngSubmit)="sendData()">
+      <div class="header">
+        Введите данные
+      </div>
+      <div class="values">
+        <div class="checkbox-battery">
+          <label>Координата X</label>
+          <div *ngFor="let xVal of xValList" class="input">
+            <input (change)="selectXCheckbox($event)" name="{{xVal.name}}" value="{{xVal.value}}" type="checkbox">
+            <span class="value">{{xVal.value}}</span>
+          </div>
+        </div>
+        <app-simple-input [formGroup]="points" [label]="'Координата Y'" [name]="'yVal'"
+                          [validationRoot]="'Y-число от -3 до 5'"></app-simple-input>
+        <div class="checkbox-battery">
+          <label>Значение R</label>
+          <div *ngFor="let rVal of rValList" class="input">
+            <input (change)="selectRCheckbox($event)" name="{{rVal.name}}" value="{{rVal.value}}" type="checkbox">
+            <span class="value">{{rVal.value}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="message">{{message}}</div>
+      <div class="form-actions">
+        <app-simple-button [text]="'Отправить'" [type]="'submit'"></app-simple-button>
+        <app-simple-button (click)="clearHits()" [text]="'Очистить'"></app-simple-button>
+      </div>
+    </form>
+  </div>
+  <div class="table-block block">
+    <div class="header-row">
+      <div>x</div>
+      <div>y</div>
+      <div>r</div>
+      <div>Время</div>
+      <div>Длительность</div>
+      <div>Попадание</div>
+    </div>
+    <div *ngFor="let hit of hits" class="row">
+      <div>{{roundValue(hit.xval)}}</div>
+      <div>{{roundValue(hit.yval)}}</div>
+      <div>{{hit.rval}}</div>
+      <div>{{hit.bornDate}}</div>
+      <div>{{hit.executionTime}}</div>
+      <div>{{hit.hit}}</div>
+    </div>
+  </div>
+</div>

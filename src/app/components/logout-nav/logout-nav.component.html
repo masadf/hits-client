@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div class="nav-block">
+    Марьин Савва(1124)
+  </div>
+  <div class="nav-block">
+    <app-router-button *ngIf="!isAuth()" [url]="getUrl()" [text]="getText()"></app-router-button>
+    <app-simple-button (click)="logout()" *ngIf="isAuth()" [text]="'Выйти'"></app-simple-button>
+  </div>
+</div>

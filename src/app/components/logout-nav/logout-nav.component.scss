@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  padding: 3rem;
+
+  .nav-block {
+    font-size: 1.5rem;
+    display: grid;
+    align-content: center;
+    font-weight: 600;
+  }
+}
